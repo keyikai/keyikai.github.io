@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<style>
+    html,
+    body {
+        width: 100%;
+        margin: 0
+    }
+
+    html {
+        height: 100%
+    }
+
+    body {
+        min-height: 100vh;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2vh 20px;
+        box-sizing: border-box;
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    p {
+        word-break: break-all
+    }
+
+    @media(max-width:500px) {
+        h1 {
+            margin-top: 80px
+        }
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    .block {
+        display: block;
+        position: relative
+    }
+
+    .url {
+        font-size: 18px;
+        padding: 12px 15px;
+        width: 350px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    input:focus {
+        outline: 0
+    }
+
+    .bar {
+        display: none;
+    }
+
+    .btn {
+        line-height: 40px;
+        background-color: #3AA99F;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 15px;
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        border-radius: 6px;
+        border: 1px solid #2d8c84;
+        padding: 0 25px;
+        width: auto;
+        min-width: 160px;
+        margin: 20px 0;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #2d8c84;
+        color: #ffffff;
+    }
+
+    .tips,
+    .example {
+        background: #f8f9fa;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin: 10px 0;
+        width: 100%;
+        max-width: 800px;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    .example p {
+        margin: 12px 0;
+        line-height: 1.6;
+    }
+
+    .example font[color="#3AA99F"] {
+        color: #2a8278;
+        font-weight: 500;
+        background: #e8f5f4;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+
+    .tips>p:first-child::before {
+        position: absolute;
+        left: -3em;
+        content: 'PS：';
+        color: #7b7b7b
+    }
+
+    .example>p:first-child::before {
+        position: absolute;
+        left: -7.5em;
+        content: '合法输入示例：';
+        color: #7b7b7b
+    }
+
+    .github-link {
+        margin-top: 20px;
+        padding: 0;
+        color: #666;
+    }
+
+    .github-link:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 0 !important;
+        max-height: fit-content;
+    }
+</style>
+
+<head>
+    <meta name="description" content="GitHub 文件加速" />
+    <meta name="keywords" content="keyikai,github,proxy,github加速,gihub加速下载" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="https://github.githubassets.com/favicons/favicon-light.svg" type="image/svg+xml" />
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="https://github.githubassets.com/favicons/favicon-dark.svg" type="image/svg+xml" />
+    <script>
+        function toSubmit(e) {
+            e.preventDefault()
+            window.open(location.href.substr(0, location.href.lastIndexOf('/') + 1) + document.getElementsByName('q')[0].value);
+            return false
+        }
+    </script>
+    <title>GitHub 文件加速</title>
+</head>
+
+<body class="flex">
+
+    <h1 style="margin-bottom: 25px"><img src="https://github.moeyy.xyz/logo.png"
+            style="width: 1.5em;margin-right: .2em;vertical-align: bottom;">GitHub 文件加速</h1>
+    <form action=".." method="get" style="padding-bottom: 20px !important" target="_blank" class="flex" onsubmit="toSubmit(event)">
+        <label class="block" style="width: fit-content">
+            <input class="block url" name="q" type="text" placeholder="键入Github文件链接"
+                pattern="^((https|http):\/\/)?(github\.com\/.+?\/.+?\/(?:releases|archive|blob|raw|suites)|((?:raw|gist)\.(?:githubusercontent|github)\.com))\/.+$"
+                required>
+            <div class="bar"></div>
+        </label>
+        <input class="block btn" type="submit" value="下载">
+        <div class="tips">
+            <p>GitHub文件链接带不带协议头都可以，支持release、archive以及文件，右键复制出来的链接都是符合标准的</a>。</p>
+            <p>注意，不支持项目文件夹，请使用Git。</p>
+        </div>
+        <div class="example">
+            <p>分支源码：<font color="#3AA99F">https://github.keyikai.tech/</font>
+                https://github.com/keyikai/project/archive/master.zip</p>
+            <p>release源码：<font color="#3AA99F">https://github.keyikai.tech/</font>
+                https://github.com/keyikai/project/archive/v0.1.0.tar.gz</p>
+            <p>release文件：<font color="#3AA99F">https://github.keyikai.tech/</font>
+                https://github.com/keyikai/project/releases/download/v0.1.0/example.zip</p>
+            <p>分支文件：<font color="#3AA99F">https://github.keyikai.tech/</font>
+                https://github.com/keyikai/project/blob/master/filename</p>
+            <p>Raw：<font color="#3AA99F">https://github.keyikai.tech/</font>
+                https://raw.githubusercontent.com/keyikai/project/archive/master.zip</p>
+            <p>使用Git: git clone <font color="#3AA99F">https://github.keyikai.tech/</font>https://github.com/keyikai/project
+            </p>
+        </div>
+    </form>
+    <p class="github-link">项目基于Cloudflare Workers，开源于GitHub <a style="color: #3AA99F; text-decoration: none;"
+            href="https://github.com/hunshcn/gh-proxy">hunshcn/gh-proxy</a>
+    </p>
+</body>
+
+</html>
